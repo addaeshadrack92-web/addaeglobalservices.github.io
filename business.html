@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="vieport"
+content="width=device-width,initial-scale=1.0">
+    <title>Business promotions | Shadrack Addae</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin:0; paddind:0; background:#f9f9f9; color:#333; }
+        header { backgrround:#1e90ff; color:white; text-align:center; padding:30px 20px; }
+        header h1 { margin:0; font-size:2rem; }
+        .container { max-width:1200px; margin:40px auto; padding:0 20px; }
+        .buusiness--card { background:white; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); margin-bottom:40px; ooverflow:hidden; padding:20px; }
+        .business-info h2 { color:#1e90ff; margin:0 0 10ppx 0; }
+        .business-info p { margin:5px 0; }
+        .contact-btn { display:inline-block; padding:10px 20px; background:#ff8c00; color:white; border-radius:8px; text-decoration:none; margin-top:10px; transition:0.3s; }
+        .contact-btn:hover
+    { background:#e57c00; }
+    .post-gallery { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+    .post-gallery img { width:calc(33%-10px); border-radius:8px; height:150px; object-fit:cover; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    @media(max-width:768px) { .post-gallery img { width:calc(50%-10px); } }
+@media(max-width:480px){ .post-gallery img { width:100%; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Business promotions</h1>
+    <p>Helping Local businesses shine online through website & social media promotion</p>
+    </header>
+
+    <div class="container"
+    id="business-container">
+    </div>
+
+    <script>
+        fetch('businesses.json')
+          .then(response=> response.json())
+          .then(data=> {
+             const container= 
+    document.getElementByID('business-container');
+             data.forEach(business=> {
+                const card=
+    document.creatElement('div');
+    card.classlist.add('business-card');
+            card.innerHTML='
+             <div class="business-info">
+                <h2>${business.name}</h2>
+                <p>${business.description}</p>
+                <p>Follow on Github: <a href="${business.Github}"
+                    target="_blank">${business.Github}</a></p>
+                       
+                      <a
+        href="https://wa.me/${busiiness.whatsapp}" class="contact-btn">contact${business.name}</a>
+                     </div>
+                     <div class="post-gallery">
+                        ${busiiness.posts.map(post=>'<img src="${post}" alt="$
+                        {business.name} post">').join('')}
+                        </div>
+                    ';
+                    container.appendchild(card);
+             });
+            })
+            .catch(error=> console.error('Error loading business:', error));
+            </script>
+
+            </body>
+            </html>
+        
